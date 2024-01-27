@@ -53,7 +53,7 @@ rsmap <- fread(file.path(strand_file_path, strand_file_name),
 
 # Check if strand does not exist
 if (!exists("rsmap")) {
-  stop("Error: Strand fıle is not found! Please check the name of the file and path.")
+  stop("Error: Strand file is not found! Please check the name of the file and path.")
 }
 
 # Check if strand file is empty or not standart
