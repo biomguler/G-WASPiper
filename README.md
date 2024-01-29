@@ -1,5 +1,23 @@
-# Genotyping-QC---Imputation---PGS
-This repository is my collection of pipelines written in R to simplify, please cite original tools/approaches referred in the pipelines 
+
+# Short description and main usage
+
+## What is G-WASPiper?
++ This repository is my collection of pipelines written in R to simplify, please cite original tools/approaches referred in the pipelines. The main idea here is putting every step in a pipe to ensure repredociblity and simplyfy all process. 
++ The pipeline designed to start from genotyping results to create ancestery / GWAS / TWAS / PRS / MR / xQTL / GWIS / FINE mapping (will be updated) analysis.
++ The main idea here creating standart pipeline for all process.
++ It is my personal reposotry to keep track all pipeline that I am using.
++ Of course anyone can used as it or with modifaction.
++ I will acknowledge any resourse/pipeline/code inclueded this codes.
+
+ ## What is NOT G-WASPiper?
+ + It is not automatic pipeline or click and run pipeline!
+ + You need to modify some arguments (MAF, INFO, HWE, p value etc.) in the codes, so please be carefull before running any pipeline.
+ + Some steps and pipelines are need strong computational resources and running this process with out any paralellization/optimization running pipelines as it will waste your time.
+ + If you have access  to any HPC, please run this analysis in side to HPC. The pipelines not optimazated for parallel work.
+ + It is not a novel package/software, published work. I will try to answer/fix any question/bug, but it would be regulary basic.
+   
+# Step-by-step G-WASPiper
+
 
 ## Explanation of the main script 
 # This script create a final_PhenoXX plink files and ancestry inference results.
