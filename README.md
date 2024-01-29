@@ -14,7 +14,7 @@
 
 ## Short description and main usage
 
-## What is G-WASPiper?
+### What is G-WASPiper?
 + This repository is my collection of pipelines written in R to simplify, please cite original tools/approaches referred in the pipelines. The main idea here is putting every step in a pipe to ensure repredociblity and simplyfy all process. 
 + The pipeline designed to start from genotyping results to create ancestery / GWAS / TWAS / PRS / MR / xQTL / GWIS / FINE mapping (will be updated) analysis.
 + The main idea here creating standart pipeline for all process.
@@ -22,14 +22,14 @@
 + Of course anyone can used as it or with modifaction.
 + I will acknowledge any resourse/pipeline/code inclueded this codes.
 
- ## What is **[NOT](#)** G-WASPiper?
- + It is **[not](#)** automatic pipeline or click and run pipeline!
+ ### What is ***NOT*** G-WASPiper?
+ + It is ***not*** automatic pipeline or click and run pipeline!
  + You need to modify some arguments (MAF, INFO, HWE, p value etc.) in the codes, so please be carefull before running any pipeline.
  + Some steps and pipelines are need strong computational resources and running this process with out any paralellization/optimization running pipelines as it will waste your time.
  + If you have access  to any HPC, please run this analysis in side to HPC. The pipelines not optimazated for parallel work.
  + It is not a novel package/software, published work. I will try to answer/fix any question/bug, but it would be regulary basic.
    
-# Step-by-step G-WASPiper
+## Step-by-step G-WASPiper
 ### Setup packages/software and dependencies
 * Step 1: All the pipeline written in R. So you need to install R/Rstudio.
 How to: Please follow the instraction <a href="https://posit.co/download/rstudio-desktop/">here.
@@ -110,10 +110,64 @@ Commands include --make-bed, --recode, --flip-scan, --merge-list,
 
 ```
 
+* Step 3: Please create a new folder named "data" (optinal but highly recommended)
 
-<p><b>Please install all necessery softwares and if you use any pipeline dependent on the these softwares please cite the orginal work!</b> </p>
+<p>Bash terminal</p>
 
-* Step 3: Please 
+```
+mkdir data
+```
+<p><b>OR</b></p>
+<p>R</p>
+
+```
+system("mkdir data")
+
+#OR
+
+dir.create("data")
+```
+
+* Step 4: Please download/copy ***Starter.R*** script to ***data*** folder
+
+<p>Bash terminal</p>
+
+```
+cd data
+Rscript --no-save Starter.R
+
+```
+<p><b>OR</b></p>
+<p>R</p>
+
+```
+setwd("data")
+
+system ("Rscript --no-save Starter.R")
+
+#OR
+
+source("Starter.R")
+```
+<p>This starter script will:</p>
+
+* Create folders for outputs
+* Download scripts from this reposotory and unzip it
+* Check necessery R packages ("tidyverse", "data.table", "dplyr", "ggplot2") installed properly.
+
+* Step 5: Please create a safe copy for your raw data before doing any modifications and move/copy your starting data to ***data*** folder
+
+<p>This optinal step but highly recommended</p>
+
+<p><b>Please install all necessery softwares and if you use any pipeline that dependent on the these softwares please cite the orginal work!</b> </p>
+
+
+### Main scripts
+* There diffrent scripts for diffrent aims which written in R. python or bash.
+* There is not any correct order to run any script it is highly depented aim and input file
+* This pipeline is designed very flexible to start any step and go to the other
+* ***But, please carefully read the instruction and check arguments in the scripts. If needed please change it!***
+
 
 
 
