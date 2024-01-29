@@ -3,10 +3,16 @@
 </p>
 
 <p align="rigth">
-  <small>Part of: Paukkunen J, Berg A, Soon V, Ødegaard F, Rosa P (2015) An illustrated key to the cuckoo wasps (Hymenoptera, Chrysididae) of the Nordic and Baltic countries, with the description of a new species. ZooKeys 548: 1-116. <a href="https://doi.org/10.3897/zookeys.548.6164">
-# G-WASPiper
+  <small>Part of: Paukkunen J, Berg A, Soon V, Ødegaard F, Rosa P (2015) An illustrated key to the cuckoo wasps (Hymenoptera, Chrysididae) of the Nordic and Baltic countries, with the description of a new species. ZooKeys 548: 1-116. <a href="https://doi.org/10.3897/zookeys.548.6164">DOI Link</a></small>
+</p>
 
-# Short description and main usage
+
+# G-WASPiper
+* A handy pipeline for GWAS/genotyping data analysis.
+* It can be easly used without having coding skills.
+* Each pipelines are general indipentent , and can be highly modified by changing `R scripts`.
+
+## Short description and main usage
 
 ## What is G-WASPiper?
 + This repository is my collection of pipelines written in R to simplify, please cite original tools/approaches referred in the pipelines. The main idea here is putting every step in a pipe to ensure repredociblity and simplyfy all process. 
