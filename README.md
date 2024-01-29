@@ -22,14 +22,36 @@
 + Of course anyone can used as it or with modifaction.
 + I will acknowledge any resourse/pipeline/code inclueded this codes.
 
- ## What is NOT G-WASPiper?
- + It is not automatic pipeline or click and run pipeline!
+ ## What is [NOT](#) G-WASPiper?
+ + It is [not](#) automatic pipeline or click and run pipeline!
  + You need to modify some arguments (MAF, INFO, HWE, p value etc.) in the codes, so please be carefull before running any pipeline.
  + Some steps and pipelines are need strong computational resources and running this process with out any paralellization/optimization running pipelines as it will waste your time.
  + If you have access  to any HPC, please run this analysis in side to HPC. The pipelines not optimazated for parallel work.
  + It is not a novel package/software, published work. I will try to answer/fix any question/bug, but it would be regulary basic.
    
 # Step-by-step G-WASPiper
+### Setup packages/software and dependencies
+* Step 1: All the pipeline written in R. So you need to install R/Rstudio.
+How to: Please follow the instraction <a href="https://posit.co/download/rstudio-desktop/">here.
+* Step 2: Even though is not written in the R, other softwares need to be downloaded/installed.
+
+* The list of software needed:
+
+| Software | Link                   | Publication                                     |
+|----------|------------------------|-------------------------------------------------|
+| Plink1.9   | [Link to Tool A](#)   | [Publication A](#)                              |
+| Plink2.0   | [Link to Tool B](#)   | [Publication B](#)                              |
+| vcftools/0.1.16   | [Link to Tool C](#)   | [Publication C](#)                              |
+| htslib/1.8   | [Link to Tool C](#)   | [Publication C](#)                              |
+| bcftools/1.9   | [Link to Tool C](#)   | [Publication C](#)                              |
+| anaconda3/2021.05   | [Link to Tool C](#)   | [Publication C](#)                              |
+| fraposa  | [Link to Tool C](#)   | [Publication C](#)                              |
+
+<p>Please install all necessery softwares and if you use any pipeline depen on the this softwares please cite the orginal work.</p>
+
+
+
+
 
 
 ## Explanation of the main script 
