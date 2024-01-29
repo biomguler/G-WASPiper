@@ -3,7 +3,7 @@
 </p>
 
 <p align="rigth">
-  <small>Source of photo: Paukkunen J, Berg A, Soon V, Ødegaard F, Rosa P (2015) An illustrated key to the cuckoo wasps (Hymenoptera, Chrysididae) of the Nordic and Baltic countries, with the description of a new species. ZooKeys 548: 1-116. <a href="https://doi.org/10.3897/zookeys.548.6164">DOI Link</a></small>
+  <small>Source of photo: <a href="https://doi.org/10.3897/zookeys.548.6164">DOI Link</a></small>
 </p>
 
 
