@@ -1,4 +1,4 @@
-<img width="300" alt="Cuckoo wasp (Chrysididae, Chrysis sp.)" src="Doc/36073553291_7c189d54a4_o.jpg">
+<img width="300" alt="Cuckoo wasp (Chrysididae, Chrysis sp.)" src="Doc/oo_70943.jpg">
 
 # Short description and main usage
 
