@@ -22,8 +22,8 @@
 + Of course anyone can used as it or with modifaction.
 + I will acknowledge any resourse/pipeline/code inclueded this codes.
 
- ## What is [NOT](#) G-WASPiper?
- + It is [not](#) automatic pipeline or click and run pipeline!
+ ## What is **[NOT](#)** G-WASPiper?
+ + It is **[not](#)** automatic pipeline or click and run pipeline!
  + You need to modify some arguments (MAF, INFO, HWE, p value etc.) in the codes, so please be carefull before running any pipeline.
  + Some steps and pipelines are need strong computational resources and running this process with out any paralellization/optimization running pipelines as it will waste your time.
  + If you have access  to any HPC, please run this analysis in side to HPC. The pipelines not optimazated for parallel work.
@@ -47,9 +47,73 @@ How to: Please follow the instraction <a href="https://posit.co/download/rstudio
 | anaconda3/2021.05   | [Link to Tool C](#)   | [Publication C](#)                              |
 | fraposa  | [Link to Tool C](#)   | [Publication C](#)                              |
 
-<p>Please install all necessery softwares and if you use any pipeline depen on the this softwares please cite the orginal work.</p>
+<p>If your instution has HPC and Rstudioserver probably all this tools already availbe as envrinmental module </p>
+
+* To check if your HPC has this softwares:
+
+* In the terminal
+
+```
+module avail
+```
+
+```
+module load R/4.2.0
+```
+
+* In the R studioserver
+
+```
+module_list <- system("module avail", intern= TRUE)
+```
+
+<p>Please carefully check if this softwares are availble, names and version can be different and it will work in major case except Plink which has different functions for these two version </p>
+<p>After installing all softwares you need to give path to R to find this softwares!</p>
+
+* For example plink1.9
+
+<p>If you have plink1.9 in the this directory</p>
+
+```
+C:/Users/username/Desktop/plink_win64_20231211
+```
+
+<p>You need to explicitly give this path in the R code like:</p>
+
+```
+#wrong
+> system("plink")
+sh: plink: command not found
+Warning message:
+In system("plink") : error in running command
 
 
+#proper
+> system("C:/Users/admm112r/Desktop/plink_win64_20231211/plink -h")
+PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+
+  plink <input flag(s)...> [command flag(s)...] [other flag(s)...]
+  plink --help [flag name(s)...]
+
+Commands include --make-bed, --recode, --flip-scan, --merge-list,
+--write-snplist, --list-duplicate-vars, --freqx, --missing, --test-mishap,
+--hardy, --mendel, --ibc, --impute-sex, --indep-pairphase, --r2, --show-tags,
+--blocks, --distance, --genome, --homozyg, --make-rel, --make-grm-gz,
+--rel-cutoff, --cluster, --pca, --neighbour, --ibs-test, --regress-distance,
+--model, --bd, --gxe, --logistic, --dosage, --lasso, --test-missing,
+--make-perm-pheno, --tdt, --qfam, --annotate, --clump, --gene-report,
+--meta-analysis, --epistasis, --fast-epistasis, and --score.
+
+"plink --help | more" describes all functions (warning: long).
+[1] 0
+
+```
+
+
+<p><b>Please install all necessery softwares and if you use any pipeline dependent on the these softwares please cite the orginal work!</b> </p>
+
+* Step 3: Please 
 
 
 
@@ -351,8 +415,21 @@ system("bash scripts/QC_impute.R")
 
 
 # Sources
-# 1) Marees, A. T., de Kluiver, H., Stringer, S., Vorspan, F., Curis, E., Marie‐Claire, C., & Derks, E. M. (2018). A tutorial on conducting genome‐wide association studies: Quality control and statistical analysis. International journal of methods in psychiatric research, 27(2), e1608.
+<p><b>Some of the pipelines modified from:</b></p>
 
+* Marees, A. T., de Kluiver, H., Stringer, S., Vorspan, F., Curis, E., Marie‐Claire, C., & Derks, E. M. (2018). A tutorial on conducting genome‐wide association studies: Quality control and statistical analysis. International journal of methods in psychiatric research, 27(2), e1608.
+
+## How to cite
+* will be updated 
+
+## Sample Data
+* will be updated 
+
+
+## Contacts
+* Github: [https://github.com/biomguler/G-WASPiper/issues](https://github.com/biomguler/G-WASPiper/issues)
+* Email:  [murat.guler@dkfz.de](murat.guler@dkfz.de)
+          [muratgmbg@gmail.com](muratgmbg@gmail.com) 
 
 
 
