@@ -46,7 +46,7 @@ system("mkdir PGS")
 # Usage: Rscript finalreport2plink.R --frn <final_report_name> --pfr <final_report_path> --sfn <strand_file_name> --psf <strand_file_path>
 # Rscript --no-save finalreport2plink.R --frn FinalReport.txt --pfr /path/to/final/report/ --sfn strand_file.csv --psf /path/to/strand/file/
 
-system ("cd G-WASPiper/scripts ; Rscript --no-save finalreport2plink.R")
+system ("cd G-WASPiper/scripts ;  Rscript --no-save finalreport2plink.R --frn FinalReport.txt --pfr /path/to/final/report/ --sfn strand_file.csv --psf /path/to/strand/file/")
 
 #############################################################################
 
