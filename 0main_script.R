@@ -22,7 +22,11 @@ library(ggplot2)
 # Please set your working directory
 setwd("HOME/{user}/{path/folder containing your final report}")
 # Download scripts that needed, please update file names or URL in the scripts
-system ("https://github.com/biomguler/Genotyping-QC---Imputation---PGS.git") # will be updated
+system ("git clone https://github.com/biomguler/Genotyping-QC---Imputation---PGS.git") # will be updated
+system ("unzip Genotyping-QC---Imputation---PGS-main.zip")
+system ("cp Genotyping-QC---Imputation---PGS-main/scripts")
+*****************************************
+
 # Create folders for outputs
 system("mkdir final2plink")
 system("mkdir raw_plink")
