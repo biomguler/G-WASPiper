@@ -10,22 +10,25 @@ rm(list=ls())
 gc()
 #############################################################################
 
-# Install or load necessary package(s)
-library(tidyverse)
-library(data.table)
-library(dplyr)
-library(ggplot2)
+# Install necessary package(s)
+# Vector of package names
+packages <- c("tidyverse", "data.table", "dplyr", "ggplot2")
+
+# Install and load packages
+for (pkg in packages) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    install.packages(pkg)
+  }
+  library(pkg, character.only = TRUE)
+}
 
 #############################################################################
 
 ### Step 0: Setup
-# Please set your working directory
-setwd("HOME/{user}/{path/folder containing your final report}")
+
 # Download scripts that needed, please update file names or URL in the scripts
-system ("git clone https://github.com/biomguler/Genotyping-QC---Imputation---PGS.git") # will be updated
-system ("unzip Genotyping-QC---Imputation---PGS-main.zip")
-system ("cp Genotyping-QC---Imputation---PGS-main/scripts")
-*****************************************
+system ("git clone https://github.com/biomguler/G-WASPiper.git")
+system ("unzip G-WASPiper.zip")
 
 # Create folders for outputs
 system("mkdir final2plink")
@@ -43,7 +46,7 @@ system("mkdir PGS")
 # Usage: Rscript finalreport2plink.R --frn <final_report_name> --pfr <final_report_path> --sfn <strand_file_name> --psf <strand_file_path>
 # Rscript --no-save finalreport2plink.R --frn FinalReport.txt --pfr /path/to/final/report/ --sfn strand_file.csv --psf /path/to/strand/file/
 
-system ("cd scripts ; Rscript --no-save finalreport2plink.R")
+system ("cd G-WASPiper/scripts ; Rscript --no-save finalreport2plink.R")
 
 #############################################################################
 
