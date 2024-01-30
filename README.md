@@ -12,6 +12,9 @@
 * It can be easly used without having coding skills.
 * Each pipelines are general indipentent , and can be highly modified by changing `R scripts`.
 
+## Main Functions and Scripts
+- all main function will be added here in text and table!!!
+
 ## Short description and main usage
 
 ### What is G-WASPiper?
@@ -24,11 +27,19 @@
 
  ### What is ***NOT*** G-WASPiper?
  + It is ***not*** automatic pipeline or click and run pipeline!
+ + It is ***not*** software / package / container. I know there are some R packages or nextflow version that similar with G-WASPiper. But, here idea is creating more flexible and modifiable pipeline that you have control at each step.
  + You need to modify some arguments (MAF, INFO, HWE, p value etc.) in the codes, so please be carefull before running any pipeline.
- + Some steps and pipelines are need strong computational resources and running this process with out any paralellization/optimization running pipelines as it will waste your time.
+ + Some steps and pipelines are need strong computational resources and running this process with out any paralellization/optimization will cost you a lot of time.
  + If you have access  to any HPC, please run this analysis in side to HPC. The pipelines not optimazated for parallel work.
  + It is not a novel package/software, published work. I will try to answer/fix any question/bug, but it would be regulary basic.
-   
+
+### How frequently it will updated?
++ The pipelines will backed-up for each major update.
++ Update doesn`t mean changing everything or every pipeline, it usually will be adding more method/script.
++ The major updates/adding features will be recorded <a href= "https://github.com/biomguler/G-WASPiper/wiki">[wiki page.](#)
++ Frequency of the updates will be related request/issue number.
+
+
 ## Step-by-step G-WASPiper
 ### Setup packages/software and dependencies
 * Step 1: All the pipeline written in R. So you need to install R/Rstudio.
