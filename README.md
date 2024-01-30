@@ -127,7 +127,7 @@ system("mkdir data")
 dir.create("data")
 ```
 
-* Step 4: Please download/copy ***Starter.R*** script to ***data*** folder
+* Step 4: Please download/copy ***Starter.R*** script to ***data*** folder and run this script
 
 <p>Bash terminal</p>
 
@@ -150,9 +150,9 @@ source("Starter.R")
 ```
 <p>This starter script will:</p>
 
-* Create folders for outputs
-* Download scripts from this reposotory and unzip it
-* Check necessery R packages ("tidyverse", "data.table", "dplyr", "ggplot2") installed properly.
+  - Create folders for outputs
+  - Download scripts from this reposotory and unzip it
+  - Check necessery R packages ("tidyverse", "data.table", "dplyr", "ggplot2") installed properly.
 
 * Step 5: Please create a safe copy for your raw data before doing any modifications and move/copy your starting data to ***data*** folder
 
@@ -171,7 +171,7 @@ source("Starter.R")
 - Input: Illumina final report, strand file (usually availble in genotyping proviers web page)
 - Functions:
   - Takes illumina final report files and convert it to pplink binary files. Checking and aligning all variants to TOP+ strand
-  - Filter low quaility variants GC Score` > 0.15 (please change it in the script before running)
+  - Filter low quaility variants GC Score > 0.15 (if neseccery please change it in the script before running)
   - Check report and strand file structure
 - Outputs
   - final2plink/ (Igen files - Pheno01.fam  Pheno01.lgen  Pheno01.map), ped/map files (Pheno02.log  Pheno02.map  Pheno02.nosex  Pheno02.ped), non-TOP+ SNPs (flip.missnp)
@@ -196,6 +196,7 @@ system ("cd G-WASPiper/scripts ;  Rscript --no-save finalreport2plink.R --frn Fi
 ```
 <p>Please change --frn (final report file names), --pfr (path for final report), --sfn(name of strand file, --psf (path for strand file) </p>  
 
+- List of arguments:
 
 | Argument | Default                  | Explaination                                     |
 |----------|------------------------|-------------------------------------------------|
@@ -209,19 +210,36 @@ system ("cd G-WASPiper/scripts ;  Rscript --no-save finalreport2plink.R --frn Fi
   - Before running this script you need to find correct strand file from service provider
 
 #### Script 2: Final report to plink files: ***finalreport2plink.R***
+- Now you should have plink binary (bfile) files and wants to do basic quality control for individual and genotyping level
+- To make easy and systematic we will use in the each step Pheno[XX] naming, from previous step we have Pheno03 .fam .bim .bed in the raw_plink folder
+- If your bfiles has different name please change it Pheno03 to do this step and continue next steps
+- Please add phenotype and sex information to fam file if you didnt put it in the first step
+- Before the removing any SNPs or individuals, we need to understand the data. How many individual do you have?
 
-### Step 2: QC
-# Now, you should have Pheno03 .fam .bim .bed in the raw_plink folder
-# If your data alread in the plink format you can start from this step
-# Please add phenotype and sex information if you didnt put it in the first step
-# The before removing any SNPs or individuals, we need to understand the data.
-# The pipeline created for large scale studies, so sample size should be minimum 1000s the conduct this QC steps
-# If you sample size below to this numbers, please dont use very strick tresholds to filter like MAF
-# Also please change this thresholds accourding to your aim and consider to merge your data with public data if possible
+<p>How to check number of individual the Terminal?:</p>  
 
-# The very first step of QC is make a decision for the MAF, mind, geno, hwe
+```
+wc -l Pheno03.fam
+```
 
+  - The pipeline created for large scale studies, so sample size should be minimum ~500 the conduct this QC steps
+  - If you sample size below to this numbers, please dont use very strick tresholds to filter variant and individual (e.g. MAF, relatedness)
+  - If you sample size too small consider to merge public data set to run same QC steps
+
+* The very first step of QC is make a decision for the MAF, mind, geno, hwe
+
+<p>R:</p>  
+
+```
 system("cd raw_plink ; plink --bfile Pheno03 --missing --freq --hardy ; cd .. ; mv raw_plink/plink* results")
+```
+
+<p>Terminal:</p>  
+
+```
+plink --bfile raw_plink/Pheno03 --missing --freq --hardy
+mv raw_plink/plink* results
+```
 
 # output: plink.frq  plink.hh  plink.hwe  plink.imiss  plink.lmiss  plink.log  plink.nosex
  
