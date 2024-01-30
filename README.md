@@ -82,11 +82,10 @@ C:/Users/username/Desktop/plink_win64_20231211
 
 ```
 #wrong
-> system("plink")
+> system("plink -h")
 sh: plink: command not found
 Warning message:
-In system("plink") : error in running command
-
+In system("plink -h") : error in running command
 
 #proper
 > system("C:/Users/admm112r/Desktop/plink_win64_20231211/plink -h")
@@ -167,6 +166,227 @@ source("Starter.R")
 * There is not any correct order to run any script it is highly depented aim and input file
 * This pipeline is designed very flexible to start any step and go to the other
 * ***But, please carefully read the instruction and check arguments in the scripts. If needed please change it!***
+
+#### Script 1: Final report to plink files: ***finalreport2plink.R***
+- Input: Illumina final report, strand file (usually availble in genotyping proviers web page)
+- Functions:
+  - Takes illumina final report files and convert it to pplink binary files. Checking and aligning all variants to TOP+ strand
+  - Filter low quaility variants GC Score` > 0.15 (please change it in the script before running)
+  - Check report and strand file structure
+-Outputs
+  - final2plink/ (Igen files - Pheno01.fam  Pheno01.lgen  Pheno01.map), ped/map files (Pheno02.log  Pheno02.map  Pheno02.nosex  Pheno02.ped), non-TOP+ SNPs (flip.missnp)
+  - raw_plink/ plink binary files (Pheno03.bed  Pheno03.bim  Pheno03.fam  Pheno03.log  Pheno03.nosex)
+
+
+<p>Basic Usage:</p>  
+
+```
+Rscript --no-save finalreport2plink.R --frn <final_report_name> --pfr <final_report_path> --sfn <strand_file_name> --psf <strand_file_path>
+```
+
+<p>Example:</p>  
+
+```
+Rscript --no-save finalreport2plink.R --frn FinalReport.txt --pfr /path/to/final/report/ --sfn strand_file.csv --psf /path/to/strand/file/
+```
+<p>How to run in the R:</p>  
+
+```
+system ("cd G-WASPiper/scripts ;  Rscript --no-save finalreport2plink.R --frn FinalReport.txt --pfr /path/to/final/report/ --sfn strand_file.csv --psf /path/to/strand/file/")
+```
+<p>Please change --frn (final report file names), --pfr (path for final report), --sfn(name of strand file, --psf (path for strand file) </p>  
+
+
+| Argument | Default                  | Explaination                                     |
+|----------|------------------------|-------------------------------------------------|
+| --frn   | FinalReport.txt  | Name of final report                              |
+| --frp   | data   | Path for final report                              |
+| --sfn   | strand_file.csv   | Name of strand file                              |
+| --psf   | data   | Path for strand file                             |
+
+
+# Optinal- If your data in the plink format skip this step.
+# If you have Finalreport file and want to convert it to plink (bed, bim,fam)
+# Illumina final report to Igen files
+# Note please change input name and path in the R script
+# Please add phenotype and sex information by modifing R script to .fam file if it is availble
+# Before running this script you need to find strand file from service provider
+# Please change strand file link before running!!! 
+
+# outputs: 
+
+### Step 2: QC
+# Now, you should have Pheno03 .fam .bim .bed in the raw_plink folder
+# If your data alread in the plink format you can start from this step
+# Please add phenotype and sex information if you didnt put it in the first step
+# The before removing any SNPs or individuals, we need to understand the data.
+# The pipeline created for large scale studies, so sample size should be minimum 1000s the conduct this QC steps
+# If you sample size below to this numbers, please dont use very strick tresholds to filter like MAF
+# Also please change this thresholds accourding to your aim and consider to merge your data with public data if possible
+
+# The very first step of QC is make a decision for the MAF, mind, geno, hwe
+
+system("cd raw_plink ; plink --bfile Pheno03 --missing --freq --hardy ; cd .. ; mv raw_plink/plink* results")
+
+# output: plink.frq  plink.hh  plink.hwe  plink.imiss  plink.lmiss  plink.log  plink.nosex
+ 
+# Generate plots and tables to visualize the genotyping rate, maf, hwe
+system ("cd scripts ; Rscript --no-save basic_stat.R")
+
+
+
+#############################################################################
+
+### Step 2: QC
+system("cd raw_plink ; plink --bfile Pheno03 --missing --freq --hardy ; cd .. ; mv raw_plink/plink* results")
+ 
+# Generate plots and tables to visualize the genotyping rate, maf, hwe
+system ("cd scripts ; Rscript --no-save basic_stat.R")
+
+# Remove SNPs (and individuals) with high levels of missingness, low MAF and hwe
+system("cd raw_plink ; plink --bfile Pheno03 --geno 0.02 --mind 0.02 --maf 0.01 --hwe include-nonctrl 5e-08 --make-bed --out Pheno04 ; cd .. ; mv raw_plink/Pheno04* QCsteps")
+
+# Check for sex discrepancy
+system("cd QCsteps ; plink --bfile Pheno04 --check-sex ; cd .. ; cp QCsteps/plink* results") 
+
+# Create list of individuals with sex discrepancy
+system("cd QCsteps; grep PROBLEM plink.sexcheck| awk '{print$1,$2}'> sex_discrepancy.txt")
+
+# This command removes the list of individuals with the status “PROBLEM”.
+system("cd QCsteps ; plink --bfile Pheno04 --remove sex_discrepancy.txt --make-bed --out Pheno05")
+
+
+# Select autosomal SNPs only (i.e., from chromosomes 1 to 22).
+system("cd QCsteps ; plink --bfile Pheno04 --autosome --make-bed --out Pheno06")
+
+
+# Generate a plot of the distribution of the heterozygosity rate of your subjects.
+system("plink --bfile QCsteps/Pheno06 --exclude scripts/high-LD-regions-hg19-GRCh37.txt --range --indep-pairwise 50 5 0.3 --out indepSNP ; mv indepSNP* QCsteps/") #highld region for 37 and 38 provided
+
+# Calculate heterozygosity and remove outliers
+system("cd QCsteps ; plink --bfile Pheno06 --extract indepSNP.prune.in --het --out check")
+
+# Plot of the heterozygosity rate distribution
+system("Rscript --no-save heterozygosity.R")
+
+# Remove heterozygosity rate outliers
+system("plink --bfile QCsteps/Pheno06 --remove results/fail-het.txt --make-bed --out Pheno07 ; mv Pheno07* QCsteps")
+
+#############################################################################
+
+### Step 4: Relatedness, PCA, ancestry inference, 1000 Genome Merge
+## a) Related Individual
+
+# Check for relationships between individuals with a pihat > 0.2.
+system("cd QCsteps ; plink --bfile Pheno06 --extract indepSNP.prune.in --genome --out pihat ; cd .. ; mv QCsteps/pihat* results")
+
+# Plot of the relatedness rate distribution
+system("Rscript --no-save Relatedness.R")
+
+# To remove this individual (if there is any) run code below 
+system("plink --bfile QCsteps/Pheno06 --remove results/relatedness_fail.txt --make-bed --out Pheno08 ; mv Pheno08* QCsteps")
+
+## b) PCA, ancestry inference, 1000 Genome Merge
+
+# Download and proccess 1000 genome data are avaible on the plink2 webpage
+system("Rscript --no-save 1000G_download.R")
+
+# Merge your study population with 1000G
+system("Rscript --no-save 1000G_merge.R")
+
+# Run fraposa 
+system("bash scripts/fraposa.sh")
+
+# Summary of fraposa
+system("Rscript --no-save scripts/fraposa.R")
+
+# Subset sample with an ancestry (Defult EUR)
+system("Rscript --no-save scripts/ancestry.R")
+
+
+# Pre Topmed/michigan imputation
+system("bash scripts/plink2vcf.sh")
+
+cd topmed
+# Unzip and make copy
+# TopMed store the imputation results for a week
+# It is good idea to make copy of the this raw files before doing any modification/filter
+# Optional make copy of raw files
+mkdir topmed_raw
+cp *zip topmed_raw
+
+
+# After you do not have need this files you can safely delete them
+
+cd topmed
+mkdir topmed_raw
+cp *zip topmed_raw
+
+# Now we can continue with files in the topmed folder
+# Unzip files
+# Please change "your-password" argument with password that you get from topmed after your imputation done via email
+system("bash scripts/unziptopmed.sh")
+
+#!/bin/bash
+for ((chr=1; chr<=22; chr++)); do
+    unzip -P 'your-password' chr_${chr}.zip
+done
+
+
+
+# download reference genome and decompress
+wget -O GRCh38_full_analysis_set_plus_decoy_hla.fa.zst https://www.dropbox.com/s/xyggouv3tnamh0j/GRCh38_full_analysis_set_plus_decoy_hla.fa.zst?dl=1
+zstd --decompress GRCh38_full_analysis_set_plus_decoy_hla.fa.zst
+
+
+#concat combines all the chromosomes into a single file
+#view filters by info score
+#norm normalises indels. Split multiallelic sites into biallelic records. SNPs and indels merged into a single record
+#create final gzipped VCF file and annotate. Remove original SNP ID and assign new SNP ID as chrom:position:ref:alt
+
+bcftools concat chr*.dose.vcf.gz -Ou | 
+bcftools view -Ou -i 'R2>0.3' |
+bcftools norm -Ou -m -any |
+bcftools norm -Ou -f hs37d5.fa |
+bcftools annotate -Oz -x ID -I +'%CHROM:%POS:%REF:%ALT' -o allchr.converted.R2_0p3.vcf.gz
+
+#--double-id means that both family and within-family IDs to be set to the sample ID
+
+plink --vcf allchr.converted.R2_0p3.vcf.gz \
+--double-id \
+--allow-extra-chr 0 \
+--maf 0.0000001 \
+--make-bed \
+--out allchr.converted.R2_0p3.MAF_1e7
+
+#You can also include these other flags - depends on what you want to do
+
+# If you want to filter by minimum posterior probability
+--vcf-min-GP 0.9 \ 
+
+# If you have any spaces in your IDs, it converts to _ because plink does not allow spaces in IDs
+--vcf-idspace-to _ \ 
+
+# QC of imputed data
+
+system("bash scripts/QC_impute.R")
+# info score
+# 
+# PRS
+
+# GWAS
+
+
+
+
+
+
+
+# Sources
+# 1) Marees, A. T., de Kluiver, H., Stringer, S., Vorspan, F., Curis, E., Marie‐Claire, C., & Derks, E. M. (2018). A tutorial on conducting genome‐wide association studies: Quality control and statistical analysis. International journal of methods in psychiatric research, 27(2), e1608.
+
+
+
 
 
 
