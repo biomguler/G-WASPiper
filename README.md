@@ -1,6 +1,4 @@
-<p align="center" style="font-size: 50px;"><b>G-WASPiper</b></p>
-
-<center><b style="font-size: 60px;">G-WASPiper</b></center>
+<p align="center" style="font-size: 50px;"><h1><b>G-WASPiper</b></h1></p>
 
 
 <p align="center">
