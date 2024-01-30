@@ -39,16 +39,12 @@
 + The major updates/adding features will be recorded <a href= "https://github.com/biomguler/G-WASPiper/wiki">[wiki page.](#)
 + Frequency of the updates will be related request/issue number.
 
+### License for G-WASPiper and other Softwares 
 
-## Step-by-step G-WASPiper
-### Setup packages/software and dependencies
-* Step 1: All the pipeline written in R. So you need to install R/Rstudio.
-How to: Please follow the instraction <a href="https://posit.co/download/rstudio-desktop/">here.
-* Step 2: Even though is not written in the R, other softwares need to be downloaded/installed.
+`G-WASPiper` is distributed under [an MIT license](https://github.com/biomguler/G-WASPiper/blob/main/LICENSE). So, it means you can do nearly everything with this pipelines. 
+<p>But, please cite the orginal works/software when you use any pipeline depents on the software/package below. </p>
 
-* The list of software needed:
-
-| Software | Link                   | Publication                                     |
+| Software | Link                   | PMID                                    |
 |----------|------------------------|-------------------------------------------------|
 | Plink1.9   | [Link to Tool A](#)   | [Publication A](#)                              |
 | Plink2.0   | [Link to Tool B](#)   | [Publication B](#)                              |
@@ -57,6 +53,24 @@ How to: Please follow the instraction <a href="https://posit.co/download/rstudio
 | bcftools/1.9   | [Link to Tool C](#)   | [Publication C](#)                              |
 | anaconda3/2021.05   | [Link to Tool C](#)   | [Publication C](#)                              |
 | fraposa  | [Link to Tool C](#)   | [Publication C](#)                              |
+| tidyverse (R) | [Link to Tool C](#)   | [Publication C](#)                              |
+
+
+
+
+## Step-by-step G-WASPiper
+- Full documentation is available at: <a href="https://github.com/biomguler/G-WASPiper/wiki">[https://github.com/biomguler/G-WASPiper/wiki](#)
+
+
+
+### Setup packages/software and dependencies
+* Step 1: All the pipeline written in R. So you need to install R/Rstudio.
+How to: Please follow the instraction <a href="https://posit.co/download/rstudio-desktop/">here.
+* Step 2: Even though is not written in the R, other softwares need to be downloaded/installed.
+
+* The list of software needed:
+
+
 
 <p>If your instution has HPC and Rstudioserver probably all this tools already availbe as envrinmental module </p>
 
