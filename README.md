@@ -1,8 +1,4 @@
-<p align="center">
- 
- ***G-WASPiper***
-
-</p>
+<p align="center"><b>G-WASPiper</b></p>
 
 <p align="center">
     <img width="250" src="Doc/oo_70943.jpg" alt="Alternative Text">
