@@ -1,4 +1,5 @@
-<p align="center" style="font-size: 480px;"><b>G-WASPiper</b></p>
+<p align="center" style="font-size: 50px;"><b>G-WASPiper</b></p>
+
 
 <p align="center">
     <img width="250" src="Doc/oo_70943.jpg" alt="Alternative Text">
