@@ -173,7 +173,7 @@ source("Starter.R")
   - Takes illumina final report files and convert it to pplink binary files. Checking and aligning all variants to TOP+ strand
   - Filter low quaility variants GC Score` > 0.15 (please change it in the script before running)
   - Check report and strand file structure
--Outputs
+- Outputs
   - final2plink/ (Igen files - Pheno01.fam  Pheno01.lgen  Pheno01.map), ped/map files (Pheno02.log  Pheno02.map  Pheno02.nosex  Pheno02.ped), non-TOP+ SNPs (flip.missnp)
   - raw_plink/ plink binary files (Pheno03.bed  Pheno03.bim  Pheno03.fam  Pheno03.log  Pheno03.nosex)
 
@@ -204,16 +204,11 @@ system ("cd G-WASPiper/scripts ;  Rscript --no-save finalreport2plink.R --frn Fi
 | --sfn   | strand_file.csv   | Name of strand file                              |
 | --psf   | data   | Path for strand file                             |
 
+- ***Important notes***
+  - Please add phenotype and sex information by modifing R script to .fam file if it is availble
+  - Before running this script you need to find correct strand file from service provider
 
-# Optinal- If your data in the plink format skip this step.
-# If you have Finalreport file and want to convert it to plink (bed, bim,fam)
-# Illumina final report to Igen files
-# Note please change input name and path in the R script
-# Please add phenotype and sex information by modifing R script to .fam file if it is availble
-# Before running this script you need to find strand file from service provider
-# Please change strand file link before running!!! 
-
-# outputs: 
+#### Script 2: Final report to plink files: ***finalreport2plink.R***
 
 ### Step 2: QC
 # Now, you should have Pheno03 .fam .bim .bed in the raw_plink folder
