@@ -39,7 +39,7 @@
 ### How frequently it will updated?
 + The pipelines will backed-up for each major update. So, anyone can access previous versions.
 + Update doesn`t mean changing everything or every pipeline, it usually will be adding more method/script.
-+ The major updates/adding features will be recorded <a href= "https://github.com/biomguler/G-WASPiper/wiki">[wiki page.](#)
++ The major updates/adding features will be recorded at the <a href="https://github.com/biomguler/G-WASPiper/wiki">wiki page</a></small>
 + Frequency of the updates will be related request/issue number and personal time.
 
 ### License for G-WASPiper and other Softwares 
@@ -62,7 +62,7 @@
 
 
 ## Step-by-step G-WASPiper
-- Full documentation is available at: <a href="https://github.com/biomguler/G-WASPiper/wiki">[https://github.com/biomguler/G-WASPiper/wiki](#)
+- Full documentation is available at the <a href="https://github.com/biomguler/G-WASPiper/wiki">wiki page</a></small>
 
 # Sources
 <p><b>Some of the pipelines modified from:</b></p>
