@@ -22,8 +22,8 @@
 
 ### What is G-WASPiper?
 + This repository is my collection of pipelines written in R to simplify, please cite original tools/approaches referred in the pipelines. The main idea here is putting every step in a pipe to ensure repredociblity and simplyfy all process. 
-+ The pipeline designed to start from genotyping results to create ancestery / GWAS / TWAS / PRS / MR / xQTL / GWIS / FINE mapping (will be updated) analysis.
-+ The main idea here creating standart pipeline for all process.
++ The pipeline designed to start from raw genotyping results to create QCed Genotype Data / Ancestery inference / GWAS / TWAS / PRS / MR / xQTL / GWIS / FINE mapping / and many more (will be updated) analysis.
++ The main idea here creating standart pipeline for all process by using different approaches/packages/softwares.
 + It is my personal reposotry to keep track all pipeline that I am using.
 + Of course anyone can used as it or with modifaction.
 + I will acknowledge any resourse/pipeline/code inclueded this codes.
@@ -37,15 +37,17 @@
  + It is not a novel package/software, published work. I will try to answer/fix any question/bug, but it would be regulary basic.
 
 ### How frequently it will updated?
-+ The pipelines will backed-up for each major update.
++ The pipelines will backed-up for each major update. So, anyone can access previous versions.
 + Update doesn`t mean changing everything or every pipeline, it usually will be adding more method/script.
 + The major updates/adding features will be recorded <a href= "https://github.com/biomguler/G-WASPiper/wiki">[wiki page.](#)
-+ Frequency of the updates will be related request/issue number.
++ Frequency of the updates will be related request/issue number and personal time.
 
 ### License for G-WASPiper and other Softwares 
 
-`G-WASPiper` is distributed under [an MIT license](https://github.com/biomguler/G-WASPiper/blob/main/LICENSE). So, it means you can do nearly everything with this pipelines. 
-<p>But, please cite the orginal works/software when you use any pipeline depents on the software/package below. </p>
++ `G-WASPiper` is distributed under [an MIT license](https://github.com/biomguler/G-WASPiper/blob/main/LICENSE). So, it means you can do nearly everything with this pipelines. 
++ But, please cite the ***orginal*** works/software when you use any pipeline depents on the software/package below. 
++ If you used `G-WASPiper` in your works please look `How to cite` section below.
+  
 
 | Software | Link                   | PMID                                    |
 |----------|------------------------|-------------------------------------------------|
