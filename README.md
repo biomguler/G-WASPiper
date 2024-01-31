@@ -76,6 +76,8 @@
 * will be updated 
 
 ## Contacts
-* Github: [https://github.com/biomguler/G-WASPiper/issues](https://github.com/biomguler/G-WASPiper/issues)
-* Email:  [murat.guler@dkfz.de](murat.guler@dkfz.de)
-          [muratgmbg@gmail.com](muratgmbg@gmail.com) 
+* Github:
+    - [https://github.com/biomguler/G-WASPiper/issues](https://github.com/biomguler/G-WASPiper/issues)
+* Email:
+    - [murat.guler@dkfz.de](murat.guler@dkfz.de)
+    - [muratgmbg@gmail.com](muratgmbg@gmail.com)
