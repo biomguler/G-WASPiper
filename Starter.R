@@ -6,7 +6,7 @@
 #Note:     Please let me know if you have any trouble
 #############################################################################
 # Optinal to clean your memory/workspace
-rm(list=ls())
+rm(list = ls())
 gc()
 #############################################################################
 # Install and check necessary package(s)
@@ -22,8 +22,9 @@ for (pkg in packages) {
 }
 #############################################################################
 # Download scripts that needed, please update file names or URL in the scripts
-system ("git clone https://github.com/biomguler/G-WASPiper.git") #update if needed
-system ("unzip G-WASPiper.zip")
+system("git clone https://github.com/biomguler/G-WASPiper.git")
+#update if needed
+system("unzip G-WASPiper.zip")
 
 # Create folders for outputs
 system("mkdir final2plink")
@@ -35,6 +36,6 @@ system("mkdir final")
 system("mkdir topmed")
 system("mkdir PGS")
 # Optinal to clean your memory/workspace
-rm(list=ls())
+rm(list = ls())
 gc()
 #End
